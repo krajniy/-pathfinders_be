@@ -11,6 +11,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Industry class represents an industry entity in the industry database table.
+ *
+ * @author Elena Ivanishcheva
+ */
+
 @Entity
 @Table(name = "industry")
 @AllArgsConstructor
@@ -18,15 +24,21 @@ import java.util.List;
 @Getter
 @Setter
 public class Industry {
-
+    /**
+     * The ID of the industry.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
+    /**
+     * The name of the industry.
+     */
     @Column(name = "name", nullable = false)
     private String name;
-
+    /**
+     * The list of articles associated with this industry.
+     */
     @OneToMany(mappedBy = "industry", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Article> articles = new ArrayList<>();
 }

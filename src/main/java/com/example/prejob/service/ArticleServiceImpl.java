@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The ArticleServiceImpl class is a service class that provides methods to interact with the Article entity through the ArticleRepository interface.
+ *
+ * @author Elena Ivanishcheva
+ */
 @Service
 public class ArticleServiceImpl implements ArticleService {
 

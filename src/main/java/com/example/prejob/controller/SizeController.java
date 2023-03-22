@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * The SizeController class is responsible for handling HTTP requests related to the Size entity.
+ *
+ * @author Elena Ivanishcheva
+ */
 @RestController
 @RequestMapping("api/size")
 public class SizeController {
@@ -19,9 +24,18 @@ public class SizeController {
     @Autowired
     SizeService sizeService;
 
+    /**
+     * Retrieves all sizes from the database.
+     *
+     * @return A ResponseEntity object containing a list of Size objects and an HTTP status code.
+     * HttpStatus.OK if the sizes are successfully retrieved.
+     * HttpStatus.NOT_FOUND if no sizes are found in the database.
+     * HttpStatus.INTERNAL_SERVER_ERROR if an error occurs while retrieving the sizes.
+     */
+
     @CrossOrigin(origins = "*")
     @GetMapping()
-    public ResponseEntity<List<Size>> getAllSizes(){
+    public ResponseEntity<List<Size>> getAllSizes() {
         try {
             return new ResponseEntity<>(sizeService.getAllSizes(), HttpStatus.OK);
         } catch (IllegalArgumentException e) {
