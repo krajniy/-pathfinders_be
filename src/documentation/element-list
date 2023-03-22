@@ -1,0 +1,5 @@
+com.example.prejob
+com.example.prejob.controller
+com.example.prejob.entity
+com.example.prejob.repository
+com.example.prejob.service
