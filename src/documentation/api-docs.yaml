@@ -1,0 +1,163 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8089
+  description: Generated server url
+paths:
+  /api/size:
+    get:
+      tags:
+      - size-controller
+      operationId: getAllSizes
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Size'
+  /api/roles:
+    get:
+      tags:
+      - role-controller
+      operationId: getAllRoles
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+  /api/majors:
+    get:
+      tags:
+      - major-controller
+      operationId: getAllMajors
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Major'
+  /api/industries:
+    get:
+      tags:
+      - industry-controller
+      operationId: getAllIndustries
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Industry'
+  /api/articles:
+    get:
+      tags:
+      - article-controller
+      operationId: getArticles
+      parameters:
+      - name: roleId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: industryId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: majorId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: sizeId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Article'
+components:
+  schemas:
+    Article:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        videoUrl:
+          type: string
+    Size:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
+    Role:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
+    Major:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
+    Industry:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
