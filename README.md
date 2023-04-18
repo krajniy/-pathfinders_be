@@ -1,11 +1,16 @@
 # Server start
 Use Java v.17 </br>
-to start server open command line:
-</br>
+to start server get docker image from:
+https://hub.docker.com/r/krajniy/prejob
+and start it with: docker run -d -p 8089:8089 docker.io/krajniy/prejob:0.0.1-SNAPSHOT
+<br>
+Another way: open command line:
+<br>
 java -jar PreJob-0.0.1-SNAPSHOT.jar
-</br>
+<br>
 Server starts on the http://localhost:8089
-</br>
+<br>
+
 ## API
 http://localhost:8089/api/articles?roleId=1&industryId=1&majorId=1&sizeId=3 -
 Returns a ResponseEntity containing a list of Article objects that match the given criteria.
